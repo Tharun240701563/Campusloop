@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusLoop — Smart College Platform</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Floating Toast Notification -->
+  <div id="toast" class="toast hidden">
+    <span id="toast-message">Action successful!</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand-logo" onclick="navigateTo('home')">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">Campus<strong>Loop</strong></span>
+      </div>
+
+      <!-- Hamburger button for mobile screens -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active" data-section="home">Home</a>
+        <a href="#lost-found" class="nav-link" data-section="lost-found">Lost & Found</a>
+        <a href="#study-materials" class="nav-link" data-section="study-materials">Study Materials</a>
+        <a href="#events" class="nav-link" data-section="events">College Events</a>
+        <a href="#marketplace" class="nav-link" data-section="marketplace">Marketplace</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+
+    <!-- ================= 1. HOME SECTION ================= -->
+    <section id="home" class="page-section active" style="display: block;">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div class="hero-content">
+          <span class="hero-badge">🌟 Welcome to Your Campus Portal</span>
+          <h1>Everything College, <br>In One Simple Loop.</h1>
+          <p>
+            CampusLoop connects students to exchange study notes, recover lost items, register for college events, and buy or sell student essentials safely.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="navigateTo('events')">Explore Events</button>
+            <button class="btn btn-secondary" onclick="navigateTo('study-materials')">Browse Notes</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Stats Banner -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-icon">📚</div>
+          <div class="stat-info">
+            <h3 id="stat-materials-count">0</h3>
+            <p>Study Materials</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔍</div>
+          <div class="stat-info">
+            <h3 id="stat-lost-count">0</h3>
+            <p>Lost & Found Items</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎉</div>
+          <div class="stat-info">
+            <h3 id="stat-events-count">4</h3>
+            <p>Upcoming Events</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🛍️</div>
+          <div class="stat-info">
+            <h3 id="stat-market-count">0</h3>
+            <p>Marketplace Items</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Features Grid -->
+      <div class="section-header">
+        <h2>What would you like to do today?</h2>
+        <p>Explore the features built for every student on campus</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card" onclick="navigateTo('lost-found')">
+          <div class="feature-icon bg-orange">🔍</div>
+          <h3>Lost & Found Registry</h3>
+          <p>Misplaced your college ID, earbuds, or calculator? Report it or check if someone has already found it.</p>
+          <span class="feature-link">Open Lost & Found &rarr;</span>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card" onclick="navigateTo('study-materials')">
+          <div class="feature-icon bg-blue">📖</div>
+          <h3>Study Notes & PYQs</h3>
+          <p>Share and download lecture notes, previous exam question papers, and textbook links by subject.</p>
+          <span class="feature-link">View Materials &rarr;</span>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card" onclick="navigateTo('events')">
+          <div class="feature-icon bg-purple">🎪</div>
+          <h3>Events & Hackathons</h3>
+          <p>Discover club competitions, cultural fests, and workshops. Register in seconds and save your pass.</p>
+          <span class="feature-link">Register for Events &rarr;</span>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card" onclick="navigateTo('marketplace')">
+          <div class="feature-icon bg-green">🏷️</div>
+          <h3>Student Marketplace</h3>
+          <p>Sell used textbooks, drafting kits, calculators, or bikes to fellow students at friendly prices.</p>
+          <span class="feature-link">Visit Marketplace &rarr;</span>
+        </div>
+      </div>
+
+      <!-- Campus Safety & Guidelines Notice -->
+      <div class="info-box">
+        <div class="info-icon">💡</div>
+        <div class="info-text">
+          <h4>Friendly Campus Tips</h4>
+          <p>
+            When meeting a student for marketplace items or returning lost belongings, prefer high-traffic campus spots during daylight (such as the Central Library foyer or the student cafeteria).
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= 2. LOST & FOUND SECTION ================= -->
+    <section id="lost-found" class="page-section">
+      <div class="section-header">
+        <h2>Lost & Found Portal</h2>
+        <p>Report misplaced belongings or return items found on campus.</p>
+      </div>
+
+      <div class="two-column-layout">
+        <!-- Left: Form to Report an Item -->
+        <div class="form-container">
+          <div class="card-header">
+            <h3>Report an Item</h3>
+            <p>Fill out the details below to add an item to the list.</p>
+          </div>
+
+          <form id="lost-found-form" novalidate>
+            <div class="form-group">
+              <label for="lf-type">Report Type *</label>
+              <select id="lf-type" required>
+                <option value="Lost">I Lost Something</option>
+                <option value="Found" selected>I Found Something</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="lf-name">Item Name *</label>
+              <input type="text" id="lf-name" placeholder="e.g., Wireless Earbuds, Blue Backpack" required>
+            </div>
+
+            <div class="form-group">
+              <label for="lf-category">Category *</label>
+              <select id="lf-category" required>
+                <option value="Electronics">Electronics</option>
+                <option value="ID & Cards">ID & Cards</option>
+                <option value="Wallets & Bags">Wallets & Bags</option>
+                <option value="Stationery & Books">Stationery & Books</option>
+                <option value="Clothing & Accessories">Clothing & Accessories</option>
+                <option value="Keys">Keys</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="lf-location">Campus Location *</label>
+              <input type="text" id="lf-location" placeholder="e.g., Library 2nd Floor, Room 304" required>
+            </div>
+
+            <div class="form-group">
+              <label for="lf-contact">Your Contact Info (Phone / Email) *</label>
+              <input type="text" id="lf-contact" placeholder="e.g., student@college.edu or 9876543210" required>
+            </div>
+
+            <div class="form-group">
+              <label for="lf-description">Description & Details *</label>
+              <textarea id="lf-description" rows="3" placeholder="Provide distinct features, color, or condition..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full">Post Item</button>
+          </form>
+        </div>
+
+        <!-- Right: Search, Filter, and Items Display -->
+        <div class="list-container">
+          <!-- Search & Filter Controls -->
+          <div class="filter-bar">
+            <input type="text" id="lf-search" placeholder="Search by item name, location, or details..." class="search-input">
+            <select id="lf-filter-type" class="filter-select">
+              <option value="all">All Items</option>
+              <option value="Lost">Lost Only</option>
+              <option value="Found">Found Only</option>
+            </select>
+          </div>
+
+          <!-- Items Grid -->
+          <div id="lost-found-list" class="cards-list">
+            <!-- Dynamically populated by script.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= 3. STUDY MATERIALS SECTION ================= -->
+    <section id="study-materials" class="page-section">
+      <div class="section-header">
+        <h2>Study Materials & Notes Exchange</h2>
+        <p>Access notes, previous year question papers (PYQs), and helpful academic links.</p>
+      </div>
+
+      <div class="two-column-layout">
+        <!-- Left: Upload Form -->
+        <div class="form-container">
+          <div class="card-header">
+            <h3>Add Study Material</h3>
+            <p>Help your classmates by sharing study documents and reference links.</p>
+          </div>
+
+          <form id="material-form" novalidate>
+            <div class="form-group">
+              <label for="mat-title">Resource Title *</label>
+              <input type="text" id="mat-title" placeholder="e.g., Data Structures Complete Notes" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mat-subject">Subject / Course *</label>
+              <input type="text" id="mat-subject" placeholder="e.g., Computer Science, Engineering Mathematics" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mat-category">Material Type *</label>
+              <select id="mat-category" required>
+                <option value="Lecture Notes">Lecture Notes</option>
+                <option value="Exam Papers (PYQ)">Exam Papers (PYQ)</option>
+                <option value="Lab Manual">Lab Manual</option>
+                <option value="Reference Book">Reference Book</option>
+                <option value="Formula Sheet">Formula Sheet</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mat-link">PDF or Resource Link URL *</label>
+              <input type="url" id="mat-link" placeholder="e.g., https://example.com/notes.pdf or Google Drive link" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mat-author">Uploaded By (Your Name/Semester) *</label>
+              <input type="text" id="mat-author" placeholder="e.g., Rahul - 4th Sem" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full">Share Resource</button>
+          </form>
+        </div>
+
+        <!-- Right: Search & Materials List -->
+        <div class="list-container">
+          <div class="filter-bar">
+            <input type="text" id="mat-search" placeholder="Search by title, subject, or type..." class="search-input">
+          </div>
+
+          <div id="materials-list" class="cards-list">
+            <!-- Dynamically populated by script.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= 4. COLLEGE EVENTS SECTION ================= -->
+    <section id="events" class="page-section">
+      <div class="section-header">
+        <h2>College Events & Fest Registrations</h2>
+        <p>Explore upcoming campus hackathons, workshops, and society events.</p>
+      </div>
+
+      <!-- Events Catalog Cards -->
+      <div id="events-catalog" class="events-grid">
+        <!-- Sample events are rendered here by JavaScript -->
+      </div>
+
+      <!-- Event Registration Section -->
+      <div class="event-registration-box" id="registration-section">
+        <div class="card-header">
+          <h3>Register for an Event</h3>
+          <p>Choose an event from the dropdown, fill in your details, and save your admission pass.</p>
+        </div>
+
+        <form id="event-reg-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-event">Select Event *</label>
+              <select id="reg-event" required>
+                <!-- Populated dynamically from events list -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-name">Full Student Name *</label>
+              <input type="text" id="reg-name" placeholder="e.g., Ananya Sharma" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="reg-email">College Email *</label>
+              <input type="email" id="reg-email" placeholder="e.g., ananya@college.edu" required>
+            </div>
+
+            <div class="form-group">
+              <label for="reg-roll">Roll / Student ID Number *</label>
+              <input type="text" id="reg-roll" placeholder="e.g., 2024CS104" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Complete Event Registration</button>
+        </form>
+      </div>
+
+      <!-- Student's Registered Passes Table -->
+      <div class="registered-events-box">
+        <h3>My Registered Event Passes</h3>
+        <p class="subtitle">These registrations are saved in your browser's localStorage.</p>
+        <div id="my-registrations-list" class="registrations-list">
+          <!-- Populated by script.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= 5. STUDENT MARKETPLACE SECTION ================= -->
+    <section id="marketplace" class="page-section">
+      <div class="section-header">
+        <h2>Student Peer Marketplace</h2>
+        <p>Buy and sell college equipment, used textbooks, and cycles safely among peers.</p>
+      </div>
+
+      <div class="two-column-layout">
+        <!-- Left: Form to List an Item -->
+        <div class="form-container">
+          <div class="card-header">
+            <h3>Sell an Item</h3>
+            <p>Post items you no longer need so other students can buy them affordably.</p>
+          </div>
+
+          <form id="marketplace-form" novalidate>
+            <div class="form-group">
+              <label for="mp-name">Item Name *</label>
+              <input type="text" id="mp-name" placeholder="e.g., Scientific Calculator fx-991EX" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mp-price">Price (₹ or $) *</label>
+              <input type="number" id="mp-price" min="0" step="1" placeholder="e.g., 450" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mp-category">Category *</label>
+              <select id="mp-category" required>
+                <option value="Textbooks">Textbooks</option>
+                <option value="Electronics & Gadgets">Electronics & Gadgets</option>
+                <option value="Cycles & Transport">Cycles & Transport</option>
+                <option value="Drafting & Lab Kits">Drafting & Lab Kits</option>
+                <option value="Hostel Essentials">Hostel Essentials</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mp-contact">Seller Contact (Phone or Email) *</label>
+              <input type="text" id="mp-contact" placeholder="e.g., 9876543210 or name@college.edu" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mp-description">Description & Condition *</label>
+              <textarea id="mp-description" rows="3" placeholder="Condition, purchase year, what's included..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-full">List Item for Sale</button>
+          </form>
+        </div>
+
+        <!-- Right: Search & Listings Grid -->
+        <div class="list-container">
+          <div class="filter-bar">
+            <input type="text" id="mp-search" placeholder="Search items by name or description..." class="search-input">
+            <select id="mp-filter-category" class="filter-select">
+              <option value="all">All Categories</option>
+              <option value="Textbooks">Textbooks</option>
+              <option value="Electronics & Gadgets">Electronics</option>
+              <option value="Cycles & Transport">Cycles</option>
+              <option value="Drafting & Lab Kits">Lab Kits</option>
+              <option value="Hostel Essentials">Hostel Essentials</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div id="marketplace-list" class="cards-list">
+            <!-- Dynamically populated by script.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">🎓</span>
+        <span class="logo-text">Campus<strong>Loop</strong></span>
+        <p>A simple, modern, student-built web platform for your college campus.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home" onclick="navigateTo('home')">Home</a></li>
+          <li><a href="#lost-found" onclick="navigateTo('lost-found')">Lost & Found</a></li>
+          <li><a href="#study-materials" onclick="navigateTo('study-materials')">Study Materials</a></li>
+          <li><a href="#events" onclick="navigateTo('events')">College Events</a></li>
+          <li><a href="#marketplace" onclick="navigateTo('marketplace')">Marketplace</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-note">
+        <h4>Project Notice</h4>
+        <p>
+          Built with pure HTML, CSS, and JavaScript. Data is saved in your current browser's <code>localStorage</code> for this device.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 CampusLoop &mdash; College Web Programming Project</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
